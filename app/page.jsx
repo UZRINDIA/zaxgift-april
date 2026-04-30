@@ -36,19 +36,7 @@ const Home = () => {
         <FeaturedProduct />
         <Banner />
        
-        {/* <NewsLetter /> */}
-         
-      {/* <ProductCard3D
-        image="https://source.unsplash.com/400x500/?watch"
-        title="Classic Watch"
-        price="$199"
-      />
-      <ProductCard3D
-        image="https://source.unsplash.com/400x500/?shoes"
-        title="Premium Sneakers"
-        price="$129"
-      />
-       */}
+      
     
       
       <Footer />

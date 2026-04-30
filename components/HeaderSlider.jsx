@@ -50,7 +50,9 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
   const goNext = () => setCurrent((c) => (c + 1) % items.length);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden select-none">
+    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen overflow-hidden select-none">
+
+      {/* Slides */}
       <div
         className="flex transition-transform duration-700 ease-in-out h-full"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -58,7 +60,7 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
         {items.map((slide, idx) => {
           const categoryName = slide.category ?? "All";
           const categorySlug = slugify(categoryName);
-          const showTitle = slugify(categoryName) !== "all"; // hide "All" label
+          const showTitle = slugify(categoryName) !== "all";
 
           return (
             <Link
@@ -67,6 +69,7 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
               className="flex-shrink-0 w-full h-full relative block group"
               prefetch={false}
             >
+              {/* Image / Video */}
               {slide.type === "image" ? (
                 <div className="relative w-full h-full">
                   <Image
@@ -74,7 +77,7 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
                     alt={`banner-${idx + 1}`}
                     fill
                     sizes="100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     priority={idx === 0}
                   />
                 </div>
@@ -90,16 +93,18 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
                 />
               )}
 
-              {/* Overlay: transparent by default (no grey wash) */}
+              {/* Overlay */}
               <div className="pointer-events-none absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors duration-500" />
 
-              {/* Text overlay (hidden for 'All') */}
+              {/* Text */}
               {showTitle && (
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white drop-shadow-lg">
-                  <h2 className="text-2xl md:text-4xl font-semibold mb-2">
+                <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-center text-white px-3">
+                  <h2 className="text-lg sm:text-2xl md:text-4xl font-semibold mb-1 sm:mb-2">
                     {categoryName}
                   </h2>
-                  <p className="text-sm opacity-90">Explore our latest collection</p>
+                  <p className="text-xs sm:text-sm opacity-90">
+                    Explore our latest collection
+                  </p>
                 </div>
               )}
             </Link>
@@ -107,27 +112,42 @@ export default function MediaSlider({ items = sliderData, interval = 5000 }) {
         })}
       </div>
 
+      {/* Prev Button */}
       <button
         onClick={goPrev}
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md z-20"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md z-20"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M15 18l-6-6 6-6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
+      {/* Next Button */}
       <button
         onClick={goNext}
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md z-20"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md z-20"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M9 6l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      {/* Dots */}
+      <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {items.map((_, i) => (
           <button
             key={i}
