@@ -62,7 +62,15 @@ export const AppContextProvider = (props) => {
     // };
 
 
-    const fetchProductData = async () => {
+   const fetchProductData = async () => {
+    try {
+        const res = await fetch('/api/products')
+        const data = await res.json()
+        setProducts(data)
+    } catch (error) {
+        toast.error('Failed to load products')
+    }
+}
         // try {
 
 
@@ -76,8 +84,7 @@ export const AppContextProvider = (props) => {
         // } catch (error) {
         //     toast.error(error?.resposne?.data?.message || error.message)
         // }
-        setProducts(productsDummyData)
-    }
+      
 
     // const fetchUserData = async () => {
     //     try {

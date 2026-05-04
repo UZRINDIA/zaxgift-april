@@ -40,21 +40,21 @@ const Product = () => {
 
 
     const handlePrevImage = () => {
-        const newIndex = (currentImageIndex - 1 + productData.image.length) % productData.image.length;
+        const newIndex = (currentImageIndex - 1 + productData.images.length) % productData.images.length;
         setCurrentImageIndex(newIndex);
-        setMainImage(productData.image[newIndex]);
+        setMainImage(productData.images[newIndex]);
     };
 
     const handleNextImage = () => {
-        const newIndex = (currentImageIndex + 1) % productData.image.length;
+        const newIndex = (currentImageIndex + 1) % productData.images.length;
         setCurrentImageIndex(newIndex);
-        setMainImage(productData.image[newIndex]);
+        setMainImage(productData.images[newIndex]);
     };
 
 
     useEffect(() => {
         if (productData) {
-            setMainImage(productData.image[0]);
+            setMainImage(productData.images[0]);
             setCurrentImageIndex(0);
         }
     }, [productData]);
@@ -81,7 +81,7 @@ const Product = () => {
                         onTouchEnd={handleSwipe}
                     >
                         <ZoomImage
-                            src={mainImage || productData.image[0]}
+                            src={mainImage || productData.images[0]}
                             alt="alt"
                             className="w-full h-auto object-cover mix-blend-multiply transform transition-transform duration-300 group-hover:scale-105  touch-pan-x select-none"
                             width={1280}
@@ -103,7 +103,7 @@ const Product = () => {
                     </div>
 
                     <div className="grid grid-cols-4 gap-4">
-                        {productData.image.map((image, index) => (
+                        {productData.images.map((image, index) => (
                             <div
                                 key={index}
                                 onMouseEnter={() => {

@@ -47,7 +47,8 @@ export default function LuxuryCollection() {
 
         {/* Carousel (draggable) */}
         <motion.div
-          className="flex gap-6 cursor-grab active:cursor-grabbing overflow-x-hidden"
+        
+  className="flex gap-6 cursor-grab active:cursor-grabbing overflow-hidden w-full"
           drag="x"
           dragConstraints={{ left: -400, right: 400 }}
         >

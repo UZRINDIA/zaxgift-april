@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     const { currency, router } = useAppContext();
     const [index, setIndex] = useState(0); // current image index
 
-    const totalImages = product.image.length;
+    const totalImages = product.images.length;
 
     const next = (e) => {
         e.stopPropagation();
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         >
             <div className="cursor-pointer group relative bg-gray-500/10 rounded-lg w-full h-52 flex items-center justify-center overflow-hidden">
                 <Image
-                    src={product.image[0]}
+                    src={product.images[0]}
                     alt={product.name}
                     className="transform transition-transform duration-300 ease-in-out group-hover:scale-110 object-cover w-full h-full"
                     width={800}
