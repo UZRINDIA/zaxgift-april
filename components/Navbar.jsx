@@ -17,8 +17,8 @@ const Navbar = () => {
       <Image
         className="cursor-pointer h-10 w-auto " 
         onClick={() => router.push('/')}
-        src={assets.logo4}
-        alt="logo4"
+        src={assets.logo2}
+        alt="logo3"
       />
       {/* <div className="flex items-center gap-6 lg:gap-10 max-md:hidden">
       <Link

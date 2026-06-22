@@ -1,7 +1,7 @@
 import React from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import logo1 from "@/assets/logo1.png";
+import logo from "@/assets/logo.png";
 import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa"; // social icons
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="w-4/5">
           <Image
             className="w-20 md:w-24"
-            src={assets.logo1}
+            src={assets.logo            }
             alt="logo1"
             width={100}
             height={100}
